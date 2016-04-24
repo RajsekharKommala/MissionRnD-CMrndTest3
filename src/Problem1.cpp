@@ -52,5 +52,28 @@ struct node{
 
 
 int get_missing_value(struct node *root,int n){
-    return -1;
+	//now for main test
+	
+	int sum = 0, total_val;
+	struct node *temp;
+	temp = root;
+	total_val = (n*(n + 1)) / 2;
+	if (temp == NULL)//for null input
+		return -1;
+	traverse(temp, &sum);
+	return total_val - sum;
+}
+void traverse(struct node *temp, int *sum)
+{
+	if (temp != NULL)
+	{
+		if ((temp->data) >= 0)
+		{
+
+			*sum = *sum + (temp->data);
+
+		}
+		traverse(temp->left, sum);
+		traverse(temp->right, sum);
+	}
 }
